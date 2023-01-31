@@ -2,6 +2,7 @@ let userContainer = document.getElementById("container");
 let fetchButton = document.getElementById("search-button");
 let city = document.getElementById("City");
 let pastSearch = document.getElementById("past");
+let today = dayjs();
 //Function tied to event listener
 var submit = function (event) {
   event.preventDefault();
@@ -34,30 +35,29 @@ function getApi(cityName) {
       })
       .then(function (data) {
         console.log(data);
-        for (let i = 0; i < data.length; i++) {
-          let currentCity = document.createElement("h3");
-          let currentDate = document.createElement("p");
-          let currentTemp = document.createElement("p");
-          let currentWind = document.createElement("p");
-          let currentHumidity = document.createElement("p");
-          currentCity.textContent = data[i].name;
-          currentDate.textContent = data[i].dt;
-          currentTemp.textContent = data[i].main.temp;
-          currentWind.textContent = data[i].wind;
-          currentHumidity.textContent = data[i].humidity;
-          userContainer.append(currentCity);
-          userContainer.append(currentDate);
-          userContainer.append(currentTemp);
-          userContainer.append(currentWind);
-          userContainer.append(currentHumidity);
-        }
+
+        let currentCity = document.createElement("h3");
+        let currentDate = document.createElement("p");
+        let currentTemp = document.createElement("p");
+        let currentWind = document.createElement("p");
+        let currentHumidity = document.createElement("p");
+        currentCity.textContent = data.name + " " + today.format("MMM D, YYYY");
+        currentDate.textContent = data.dt;
+        currentTemp.textContent = "Temp: " + data.main.temp + "°C";
+        currentWind.textContent = "Wind: " + data.wind.deg + " KmPH";
+        currentHumidity.textContent = "humidity: " + data.main.humidity + "%";
+        userContainer.append(currentCity);
+        userContainer.append(currentDate);
+        userContainer.append(currentTemp);
+        userContainer.append(currentWind);
+        userContainer.append(currentHumidity);
       });
   }
   /**function for the second section of the right side **/
   function futureWeather(cityName) {
     var requestUrl =
       "https://api.openweathermap.org/data/2.5/weather?q=" +
-      city +
+      cityName +
       "&appid=95c0689e9f9d26f83c979fa053735e79&units=metric";
 
     fetch(requestUrl)
@@ -76,6 +76,7 @@ function getApi(cityName) {
           data.list[31],
           data.list[39],
         ];
+        console.log(futureWeatherArray);
         for (let i = 0; i < futureWeatherArray.length; i++) {
           let futuredate = document.createElement("h3");
           let futureTemp = document.createElement("p");
