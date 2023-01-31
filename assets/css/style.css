@@ -1,0 +1,33 @@
+body {
+  margin: 0 auto;
+  font-family: sans-serif;
+}
+/**header style **/
+header {
+  background-color: darkblue;
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+/**body style **/
+.main {
+  display: flex;
+  flex-direction: row;
+}
+.first-div {
+  margin-left: 1%;
+}
+.second-div {
+  margin-left: 5%;
+}
+.search-form {
+  display: flex;
+  flex-direction: column;
+}
+.button {
+  background-color: darkblue;
+  color: white;
+}
+.search-input {
+  margin-bottom: 3%;
+}

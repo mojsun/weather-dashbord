@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>weather dashbord</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>weather dashboard</h1>
+    </header>
+    <main>
+      <div class="main">
+        <div class="first-div">
+          <h2>search for the City:</h2>
+          <form id="search-form" class="search-form">
+            <input
+              id="City"
+              class="search-input"
+              type="text"
+              placeholder="San Diego"
+            />
+            <button class="button" id="search-button">Search</button>
+            <div class="past" id="past"></div>
+          </form>
+        </div>
+
+        <div class="second-div" id="container">
+          <div id="current"></div>
+          <div id="future"></div>
+        </div>
+      </div>
+    </main>
+    <script src="./assets/js/script.js"></script>
+  </body>
+</html>
